@@ -8,6 +8,21 @@ class PostsController extends Controller
 {
     public function index() 
     {
-        return 'hello';
+        return view('posts.index');
+    }
+
+    public function create() 
+    {
+        return view('posts.create');
+    }
+
+    public function show() 
+    {
+        return view('posts.show');
+    }
+
+    public function edit() 
+    {
+        return view('posts.edit');
     }
 }
