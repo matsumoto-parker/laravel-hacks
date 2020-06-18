@@ -52,7 +52,19 @@ class PostsController extends Controller
             'body' => 'required|max:140'
         ]);
 
-        Post::create($params);
+        $post = Post::findOrFail($post_id);
+        $post->fill($params)->save();
+
+        return redirect()->route('posts.show', ['post' => $post]);
+    }
+
+    public function destroy($post_id) 
+    {
+        $post = Post::findOrFail($post_id);
+
+        \DB::transaction(function() use ($post) {
+            $post->delete();
+        });
 
         return redirect()->route('top');
     }

@@ -7,14 +7,24 @@
           投稿の編集
         </h5>
 
-        {!!Form::open(['route' => ['posts.update', $post->id]], 'method' => 'put')!!}
+        @if ($errors->any())
+          <div>
+            <ul class="alert alert-danger">
+              @foreach ($errors->all() as $error)
+              <li>{{$error}}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
+
+        {!!Form::open(['route' => ['posts.update', $post->id], 'method' => 'put'])!!}
           <div class="form-groop">
             {!!Form::label('title', 'タイトル')!!}
             {!!Form::text('title', old('title') ? old('title') : $post->title, ['class'=>'form-control'])!!}
           </div>
           <div class="form-groop mt-4">
             {!!Form::label('body', '本文')!!}
-            {!!Form::textarea('body', old('body'), ? old('body') : $post->body, ['class'=>'form-control'])!!}
+            {!!Form::textarea('body', old('body') ? old('body') : $post->body, ['class'=>'form-control'])!!}
           </div>
 
           <div class="mt-4">
