@@ -7,12 +7,12 @@
           投稿の新規作成
         </h5>
 
-        {!!Form::open()!!}
+        {!!Form::open(['route' => 'posts.store'])!!}
           <div class="form-groop">
             {!!Form::label('title', 'タイトル')!!}
             {!!Form::text('title', old('title'), ['class'=>'form-control'])!!}
           </div>
-          <div class="form-groop">
+          <div class="form-groop mt-4">
             {!!Form::label('body', '本文')!!}
             {!!Form::textarea('body', old('body'), ['class'=>'form-control'])!!}
           </div>

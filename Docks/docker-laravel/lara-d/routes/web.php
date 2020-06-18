@@ -17,5 +17,7 @@
 
 Route::get('/', 'PostsController@index')->name('top');
 Route::get('/create', 'PostsController@create')->name('posts.create');
-Route::get('/show', 'PostsController@show')->name('posts.show');
-Route::get('/edit', 'PostsController@edit')->name('posts.edit');
+Route::post('/store', 'PostsController@store')->name('posts.store');
+Route::get('/show/{post_id}', 'PostsController@show')->name('posts.show');
+Route::get('/edit/{post_id}', 'PostsController@edit')->name('posts.edit');
+Route::put('/update/{post_id}', 'PostsController@update')->name('posts.update');
